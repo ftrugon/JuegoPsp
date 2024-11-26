@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dc6yn28m2cepn"]
+
+[ext_resource type="Script" path="res://scripts/CharacterController3.gd" id="1_o34r1"]
+[ext_resource type="Texture2D" uid="uid://dclrx5rdhsa7" path="res://assests/sprites/knight.png" id="2_tf8fq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpx7n"]
+atlas = ExtResource("2_tf8fq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh2p7"]
+atlas = ExtResource("2_tf8fq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3my26"]
+atlas = ExtResource("2_tf8fq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rir3n"]
+atlas = ExtResource("2_tf8fq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2r4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpx7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh2p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3my26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rir3n")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m14bl"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_o34r1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_j2r4e")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 3
+frame_progress = 0.607997
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_m14bl")
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dashAgainTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="wallJumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dashAgainTimer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="wallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
