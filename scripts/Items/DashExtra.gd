@@ -1,11 +1,6 @@
-# salto_extra.gd
-class_name DashExtra extends Item
+extends InventoryItem
 
-func _init():
-	nombre = "Diarrea continua"
-	desc = "Notas como se divide"
-	efecto = "Dash extra!"
+class_name dash_extra
 
-func aplicar(stats:PlayerStats):
-	stats.max_dashes += 1
-	stats.dash_force = stats.dash_force  * 0.80
+func aplicar(stats: PlayerStats):
+	stats.max_dashes += 1  # Incrementa la salud del jugador

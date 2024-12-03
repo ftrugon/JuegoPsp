@@ -3,7 +3,6 @@ extends Resource
 class_name Atributos_constantes
 
 
-
 #Extra
 const gravity = 980
 const limit_fall_speed = 800
@@ -21,9 +20,9 @@ const max_jumps = 2
 const max_coyote_time = 0.09
 
 #wall jump
-const  wall_jump_y_force = -300
-const  wall_jump_x_force = 300
-
+const wall_jump_y_force = -300
+const wall_jump_x_force = 300
+const max_last_time_on_wall = 0.20
 #slide
 const max_time_before_sliding = 0.15
 const slide_speed = 100

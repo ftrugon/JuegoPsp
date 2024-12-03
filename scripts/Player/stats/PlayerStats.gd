@@ -23,6 +23,7 @@ class_name PlayerStats
 #wall jump
 @export var wall_jump_y_force = 0
 @export var wall_jump_x_force = 0
+@export var max_last_time_on_wall = 0.0
 
 #slide
 @export var max_time_before_sliding = 0.0

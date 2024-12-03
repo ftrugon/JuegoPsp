@@ -27,6 +27,9 @@ var jump_count = 0
 var coyote_timer = 0
 var input_jump = false
 
+#salto en la pared 
+var last_time_on_wall = 0
+
 #slide
 var is_sliding = false
 var actual_time_before_sliding = 0
@@ -62,21 +65,11 @@ func move(delta):
 	# Calcula la cantidad de movimiento usando una fórmula de interpolación suave(sacado de un video canal --> Dawnosaur)
 	var movement = pow(abs(speedDif)*accelRate, estadisticas.get_vel_power()) * sign(speedDif)
 	
-	#aplica el movimiento
-	
 	if Input.is_action_just_pressed("dash") and can_dash() :
-		is_dashing = true
 		dash()
-	elif input_jump and is_on_wall():
+	elif input_jump and (is_on_wall() or last_time_on_wall <= estadisticas.get_max_last_time_on_wall()):
 		var normal = get_wall_normal()
 		
-		#if normal.x > 0:
-		#	print("la colision viene de la izquieda")
-		#elif normal.x < 0:
-		#	print("la colision viene de la derecha")
-		
-		#velocity.y = 100
-		#velocity.x = 100
 		wall_jump(normal.x)
 	else:
 		velocity.x += movement * delta 
@@ -153,18 +146,12 @@ func jump(delta):
 		jump_actual_duration = estadisticas.get_max_jump_duration()
 
 func can_wall_jump() -> bool:
-		
-	#Si acaba de salir de una pared se consume el salto que se ha hecho en el suelo
 	
-	if is_on_floor():
+	if is_on_floor() and !is_on_wall():
 		return false
 	
 	if is_on_ceiling():
 		return false
-	
-	#if !is_on_wall_only() and jump_count == 0:
-	#	jump_count += 1
-
 
 	if jump_count > estadisticas.get_max_jumps():
 		return false
@@ -199,31 +186,23 @@ func can_dash() -> bool:
 
 func dash():
 	
+	is_dashing = true
 	actual_dashes += 1
-	
 	
 	var to_dash_x = estadisticas.get_dash_force()
 	var to_dash_y = estadisticas.get_dash_force()
 	
-	# Ajuste para dashes diagonales
+	# para dashes diagonales
 	if x_dir != 0 and y_dir != 0:
 		to_dash_x = estadisticas.get_dash_force() * 0.75
 		to_dash_y = estadisticas.get_dash_force() * 0.75
-		dash_duration_buffer= estadisticas.get_max_dash_duration() * 0.10
+		dash_duration_buffer= estadisticas.get_max_dash_duration() * 0.75
 	# ajusto para solo dashear hacia arriba
 	elif y_dir == -1 and !x_dir:
 		to_dash_y = estadisticas.get_dash_force() * 0.75
-		dash_duration_buffer= estadisticas.get_max_dash_duration() * 0.10
+		dash_duration_buffer= estadisticas.get_max_dash_duration() * 0.75
 	else:
 		dash_duration_buffer= estadisticas.get_max_dash_duration()
-	
-	#Si no dasheas hacia ningun lado se resetara un salto
-	#if x_dir == 0 and y_dir == 0:
-	#	print("--------------------------------")
-	#	print(jump_count)
-	#	jump_count -= 1
-	#	print(jump_count)
-	#	print(estadisticas.get_max_jumps())
 	
 	#particulas del dash
 	dash_particles.restart()
@@ -249,6 +228,8 @@ func on_floor_and_walls_variables_manage(delta):
 	if is_dashing:
 		dash_on_cooldown = true
 		actual_dash_duration += delta
+		if is_on_wall() or is_on_floor() or is_on_ceiling():
+			is_dashing = false
 		if actual_dash_duration >= dash_duration_buffer:
 			actual_dash_duration = 0
 			is_dashing = false
@@ -266,6 +247,8 @@ func on_floor_and_walls_variables_manage(delta):
 		actual_dashes = 0
 		
 	elif is_on_wall_only():
+		last_time_on_wall = 0
+		coyote_timer = estadisticas.get_max_coyote_time()
 		jump_actual_duration = 0
 		jump_count = 0
 		actual_dashes = 0
@@ -273,6 +256,7 @@ func on_floor_and_walls_variables_manage(delta):
 			is_sliding = true
 	else:
 		is_sliding = false
+		last_time_on_wall += delta
 		coyote_timer += delta
 		actual_time_before_sliding = 0
 

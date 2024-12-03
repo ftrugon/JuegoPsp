@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HealthPotion" load_steps=3 format=3 uid="uid://c1qn74mjpsqrh"]
+
+[ext_resource type="Script" path="res://scripts/Items/dashExtra.gd" id="1_77ejb"]
+[ext_resource type="Texture2D" uid="uid://d2hbhh01sirx6" path="res://assests/sprites/dust.png" id="2_668n2"]
+
+[resource]
+script = ExtResource("1_77ejb")
+name = "dashExtra"
+texture = ExtResource("2_668n2")

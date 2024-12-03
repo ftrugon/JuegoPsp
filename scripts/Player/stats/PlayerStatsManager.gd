@@ -50,6 +50,8 @@ func get_wall_jump_y_force():
 func get_wall_jump_x_force(): 
 	return itemsStats.wall_jump_x_force + baseStats.wall_jump_x_force
 
+func get_max_last_time_on_wall():
+	return itemsStats.max_last_time_on_wall + baseStats.max_last_time_on_wall
 
 #slide
 func get_max_time_before_sliding(): 
