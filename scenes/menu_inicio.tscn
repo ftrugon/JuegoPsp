@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://m1a7vq2svr80"]
+
+[ext_resource type="Script" path="res://scripts/menu_inicio.gd" id="1_2w7ba"]
+[ext_resource type="Texture2D" uid="uid://bjc3wy3l71gah" path="res://assests/sprites/caballero.png" id="1_fii6y"]
+[ext_resource type="Texture2D" uid="uid://cdugm1icmr52r" path="res://assests/sprites/cielo.png" id="1_ralyu"]
+
+[node name="MenuInicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2w7ba")
+
+[node name="CastilloYCaballero" type="Sprite2D" parent="."]
+position = Vector2(578.993, 319.348)
+scale = Vector2(1.05557, 1.04429)
+texture = ExtResource("1_ralyu")
+
+[node name="Cielo" type="Sprite2D" parent="."]
+position = Vector2(573, 455)
+scale = Vector2(1.04516, 0.625608)
+texture = ExtResource("1_fii6y")
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -68.0
+offset_right = 58.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Continuar" type="Button" parent="ContenedorBotones"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.410249, 0.388732, 0.452039, 1)
+disabled = true
+text = "Continuar"
+
+[node name="Inicar partida" type="Button" parent="ContenedorBotones"]
+layout_mode = 2
+text = "Iniciar Partida"
+
+[node name="Ajustes" type="Button" parent="ContenedorBotones"]
+layout_mode = 2
+text = "Ajustes"
+
+[node name="Salir" type="Button" parent="ContenedorBotones"]
+layout_mode = 2
+text = "Salir del juego"
+
+[connection signal="pressed" from="ContenedorBotones/Inicar partida" to="." method="_on_inicar_partida_pressed"]
+[connection signal="pressed" from="ContenedorBotones/Salir" to="." method="_on_salir_pressed"]

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+
 @export var estadisticas: PlayerStatsManager
 @export var inventario: Inventory
 
@@ -15,6 +16,7 @@ var y_dir = 0
 @onready var dash_particles = $Particles/DashPoopParticles
 @onready var run_particles = $Particles/RunParticles
 @onready var sliding_particles = $Particles/SlidingParticles
+@onready var bottom_light_occluder = $bottomOccluder
 
 var actualGravity = 0
 
@@ -69,7 +71,6 @@ func move(delta):
 		dash()
 	elif input_jump and (is_on_wall() or last_time_on_wall <= estadisticas.get_max_last_time_on_wall()):
 		var normal = get_wall_normal()
-		
 		wall_jump(normal.x)
 	else:
 		velocity.x += movement * delta 
@@ -160,7 +161,7 @@ func can_wall_jump() -> bool:
 
 func wall_jump(normal):
 	if can_wall_jump():
-		
+		last_time_on_wall = estadisticas.get_max_last_time_on_wall()
 		jump_particles.restart()
 		
 		velocity.y = estadisticas.get_wall_jump_y_force()
@@ -226,6 +227,7 @@ func inputs():
 func on_floor_and_walls_variables_manage(delta):
 	
 	if is_dashing:
+		is_sliding = false
 		dash_on_cooldown = true
 		actual_dash_duration += delta
 		if is_on_wall() or is_on_floor() or is_on_ceiling():
@@ -233,6 +235,11 @@ func on_floor_and_walls_variables_manage(delta):
 		if actual_dash_duration >= dash_duration_buffer:
 			actual_dash_duration = 0
 			is_dashing = false
+
+
+	if input_jump:
+		is_sliding = false
+
 
 	if dash_on_cooldown:
 		actual_dash_coldown += delta
@@ -279,7 +286,7 @@ func gravity_manage(delta):
 			actualGravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 		
 		#handle sliding
-		if is_sliding:
+		if is_sliding and !is_dashing and !input_jump:
 			velocity.y = 0
 			actual_time_before_sliding += delta
 			if actual_time_before_sliding > estadisticas.get_max_time_before_sliding():
@@ -297,6 +304,7 @@ func gravity_manage(delta):
 func dir():
 	if x_dir != 0:
 		sprite.flip_h = x_dir < 0
+		bottom_light_occluder.transform.x.x = -x_dir
 
 func animations():
 	
@@ -325,7 +333,6 @@ func animations():
 		sprite.rotation_degrees = 0
 
 func particles():
-	
 	
 	if is_on_wall() and is_sliding and velocity.y != 0:
 		sliding_particles.emitting = true

@@ -22,7 +22,7 @@ const max_coyote_time = 0.09
 #wall jump
 const wall_jump_y_force = -300
 const wall_jump_x_force = 300
-const max_last_time_on_wall = 0.20
+const max_last_time_on_wall = 0.10
 #slide
 const max_time_before_sliding = 0.15
 const slide_speed = 100

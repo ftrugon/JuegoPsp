@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dc6yn28m2cepn"]
+[gd_scene load_steps=46 format=3 uid="uid://dc6yn28m2cepn"]
 
 [ext_resource type="Script" path="res://scripts/Player/move/Player.gd" id="1_e78r4"]
 [ext_resource type="Script" path="res://scripts/Player/stats/Constantes.gd" id="2_1067w"]
@@ -263,6 +263,12 @@ scale_max = 0.05
 color = Color(0.142701, 0.0839273, 0.0586143, 1)
 color_ramp = SubResource("GradientTexture1D_imis2")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b4he4"]
+polygon = PackedVector2Array(0, -12, 0, -12, 0, 0, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5tybp"]
+polygon = PackedVector2Array(0, -1, 5, -1, 5, 0, 0, 0)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inventario")]
 collision_mask = 3
 script = ExtResource("1_e78r4")
@@ -316,4 +322,10 @@ texture = ExtResource("3_doiip")
 
 [node name="Inventario" type="Node2D" parent="."]
 script = ExtResource("4_jjs1o")
-items = Array[ExtResource("8_8ybks")]([ExtResource("8_j2omc")])
+items = Array[ExtResource("8_8ybks")]([ExtResource("8_j2omc"), ExtResource("8_j2omc"), ExtResource("8_j2omc")])
+
+[node name="SideLightOcludder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b4he4")
+
+[node name="bottomOccluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_5tybp")
