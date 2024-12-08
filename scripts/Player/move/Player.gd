@@ -16,7 +16,7 @@ var y_dir = 0
 @onready var dash_particles = $Particles/DashPoopParticles
 @onready var run_particles = $Particles/RunParticles
 @onready var sliding_particles = $Particles/SlidingParticles
-@onready var bottom_light_occluder = $bottomOccluder
+@onready var diying_particles = $Particles/DiyingParticles
 
 var actualGravity = 0
 
@@ -67,6 +67,7 @@ func move(delta):
 	# Calcula la cantidad de movimiento usando una fórmula de interpolación suave(sacado de un video canal --> Dawnosaur)
 	var movement = pow(abs(speedDif)*accelRate, estadisticas.get_vel_power()) * sign(speedDif)
 	
+
 	if Input.is_action_just_pressed("dash") and can_dash() :
 		dash()
 	elif input_jump and (is_on_wall() or last_time_on_wall <= estadisticas.get_max_last_time_on_wall()):
@@ -75,8 +76,9 @@ func move(delta):
 	else:
 		velocity.x += movement * delta 
 	
-	#Permite que el personaje se pueda mover
-	move_and_slide()
+	#Permite que el personaje se pueda mover si es que puede
+	if can_move:
+		move_and_slide()
 
 """
 func tal() -> bool:
@@ -212,7 +214,7 @@ func dash():
 	velocity.y = (to_dash_y * y_dir)
 
 func inputs():
-	if !is_dashing:
+	if !is_dashing and can_move:
 	
 		#todos los inputs, me da pereza hacer una clase solo para esto
 		x_dir = Input.get_axis("left","right")
@@ -222,7 +224,7 @@ func inputs():
 		
 		#Easter egg por pulsar arriba y abajo a la vez
 		if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down") :
-			global_position.y = -10000
+			global_position.y = -1000
 
 func on_floor_and_walls_variables_manage(delta):
 	
@@ -304,7 +306,6 @@ func gravity_manage(delta):
 func dir():
 	if x_dir != 0:
 		sprite.flip_h = x_dir < 0
-		bottom_light_occluder.transform.x.x = -x_dir
 
 func animations():
 	
@@ -379,3 +380,6 @@ func _physics_process(delta: float) -> void:
 	
 	#gestiona las particulas que no son del dash ni del salto
 	particles()
+
+func die():
+	diying_particles.restart()

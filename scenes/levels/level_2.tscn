@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cewr4rqsixc7g"]
+
+[ext_resource type="PackedScene" uid="uid://dc6yn28m2cepn" path="res://scenes/player.tscn" id="1_pm6wj"]
+[ext_resource type="Script" path="res://scripts/Player/Inventario.gd" id="2_ufqqx"]
+[ext_resource type="Script" path="res://scripts/Items/InventoryItem.gd" id="3_dbejk"]
+[ext_resource type="Resource" uid="uid://c1qn74mjpsqrh" path="res://ItemsResources/DashExtra.tres" id="4_pkquo"]
+
+[node name="level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_pm6wj")]
+visibility_layer = 7
+position = Vector2(1145, 313)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_left = 16
+limit_right = 1400
+position_smoothing_enabled = true
+
+[node name="Inventario2" type="Node2D" parent="Player"]
+script = ExtResource("2_ufqqx")
+items = Array[ExtResource("3_dbejk")]([ExtResource("4_pkquo")])

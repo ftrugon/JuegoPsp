@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dc6yn28m2cepn"]
+[gd_scene load_steps=45 format=3 uid="uid://dc6yn28m2cepn"]
 
 [ext_resource type="Script" path="res://scripts/Player/move/Player.gd" id="1_e78r4"]
 [ext_resource type="Script" path="res://scripts/Player/stats/Constantes.gd" id="2_1067w"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://d2hbhh01sirx6" path="res://assests/sprites/dust.png" id="3_doiip"]
 [ext_resource type="Script" path="res://scripts/Player/stats/PlayerStats.gd" id="3_dq5ys"]
 [ext_resource type="Script" path="res://scripts/Player/Inventario.gd" id="4_jjs1o"]
-[ext_resource type="Script" path="res://scripts/Items/InventoryItem.gd" id="8_8ybks"]
-[ext_resource type="Resource" uid="uid://c1qn74mjpsqrh" path="res://ItemsResources/DashExtra.tres" id="8_j2omc"]
 
 [sub_resource type="Resource" id="Resource_4tcac"]
 script = ExtResource("2_1067w")
@@ -205,26 +203,6 @@ scale_over_velocity_max = 13.65
 color = Color(0.411645, 0.340624, 0.126663, 1)
 color_ramp = SubResource("GradientTexture1D_qhfkh")
 
-[sub_resource type="Gradient" id="Gradient_4hpns"]
-offsets = PackedFloat32Array(0, 0.100719, 0.561151, 0.992806)
-colors = PackedColorArray(0.34902, 0.223529, 0.12549, 0, 0.348842, 0.223006, 0.126273, 1, 0.72035, 0.346365, 0, 1, 0.721569, 0.345098, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0xj0n"]
-gradient = SubResource("Gradient_4hpns")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bboku"]
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_max = 98.52
-gravity = Vector3(0, 200, 0)
-damping_min = 60.591
-damping_max = 68.473
-scale_min = 0.1
-scale_max = 0.1
-color = Color(0.309103, 0.1577, 0.00121229, 1)
-color_ramp = SubResource("GradientTexture1D_0xj0n")
-
 [sub_resource type="Gradient" id="Gradient_arm6g"]
 offsets = PackedFloat32Array(0, 0.431655, 0.928058)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -263,17 +241,50 @@ scale_max = 0.05
 color = Color(0.142701, 0.0839273, 0.0586143, 1)
 color_ramp = SubResource("GradientTexture1D_imis2")
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b4he4"]
-polygon = PackedVector2Array(0, -12, 0, -12, 0, 0, 0, 0)
+[sub_resource type="Gradient" id="Gradient_4hpns"]
+offsets = PackedFloat32Array(0, 0.100719, 0.561151, 0.992806)
+colors = PackedColorArray(0.34902, 0.223529, 0.12549, 0, 0.348842, 0.223006, 0.126273, 1, 0.72035, 0.346365, 0, 1, 0.721569, 0.345098, 0, 0)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5tybp"]
-polygon = PackedVector2Array(0, -1, 5, -1, 5, 0, 0, 0)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0xj0n"]
+gradient = SubResource("Gradient_4hpns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bboku"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 98.52
+gravity = Vector3(0, 200, 0)
+damping_min = 60.591
+damping_max = 68.473
+scale_min = 0.1
+scale_max = 0.1
+color = Color(0.309103, 0.1577, 0.00121229, 1)
+color_ramp = SubResource("GradientTexture1D_0xj0n")
+
+[sub_resource type="Gradient" id="Gradient_ssh6o"]
+offsets = PackedFloat32Array(0, 0.0729167, 0.822917, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4askn"]
+gradient = SubResource("Gradient_ssh6o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ju86"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 224.14
+gravity = Vector3(0, 200, 0)
+damping_min = 60.345
+damping_max = 62.069
+scale_min = 0.07
+scale_max = 0.1
+color = Color(0.598413, 0.00353813, 2.40654e-07, 1)
+color_ramp = SubResource("GradientTexture1D_4askn")
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inventario")]
 collision_mask = 3
 script = ExtResource("1_e78r4")
 estadisticas = SubResource("Resource_veilt")
-inventario = NodePath("Inventario")
+inventario = NodePath("Node2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -297,16 +308,6 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 0.5
 
-[node name="DashPoopParticles" type="GPUParticles2D" parent="Particles"]
-emitting = false
-amount = 100
-amount_ratio = 0.4615
-process_material = SubResource("ParticleProcessMaterial_bboku")
-texture = ExtResource("3_doiip")
-lifetime = 0.4
-one_shot = true
-explosiveness = 1.0
-
 [node name="RunParticles" type="GPUParticles2D" parent="Particles"]
 emitting = false
 amount = 40
@@ -320,12 +321,25 @@ amount = 20
 process_material = SubResource("ParticleProcessMaterial_4gsov")
 texture = ExtResource("3_doiip")
 
-[node name="Inventario" type="Node2D" parent="."]
+[node name="DashPoopParticles" type="GPUParticles2D" parent="Particles"]
+emitting = false
+amount = 100
+amount_ratio = 0.4615
+process_material = SubResource("ParticleProcessMaterial_bboku")
+texture = ExtResource("3_doiip")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+
+[node name="DiyingParticles" type="GPUParticles2D" parent="Particles"]
+position = Vector2(0, -5)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_7ju86")
+texture = ExtResource("3_doiip")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.64
+
+[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("4_jjs1o")
-items = Array[ExtResource("8_8ybks")]([ExtResource("8_j2omc"), ExtResource("8_j2omc"), ExtResource("8_j2omc")])
-
-[node name="SideLightOcludder" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_b4he4")
-
-[node name="bottomOccluder" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_5tybp")

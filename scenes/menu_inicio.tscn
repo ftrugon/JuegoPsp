@@ -38,23 +38,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Continuar" type="Button" parent="ContenedorBotones"]
-layout_mode = 2
-theme_override_colors/font_disabled_color = Color(0.410249, 0.388732, 0.452039, 1)
-disabled = true
-text = "Continuar"
-
 [node name="Inicar partida" type="Button" parent="ContenedorBotones"]
 layout_mode = 2
-text = "Iniciar Partida"
+text = "New Game"
 
 [node name="Ajustes" type="Button" parent="ContenedorBotones"]
 layout_mode = 2
-text = "Ajustes"
+text = "Settings"
 
 [node name="Salir" type="Button" parent="ContenedorBotones"]
 layout_mode = 2
-text = "Salir del juego"
+text = "Quit
+"
 
 [connection signal="pressed" from="ContenedorBotones/Inicar partida" to="." method="_on_inicar_partida_pressed"]
 [connection signal="pressed" from="ContenedorBotones/Salir" to="." method="_on_salir_pressed"]
