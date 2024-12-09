@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dc6yn28m2cepn"]
+[gd_scene load_steps=47 format=3 uid="uid://dc6yn28m2cepn"]
 
 [ext_resource type="Script" path="res://scripts/Player/move/Player.gd" id="1_e78r4"]
 [ext_resource type="Script" path="res://scripts/Player/stats/Constantes.gd" id="2_1067w"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d2hbhh01sirx6" path="res://assests/sprites/dust.png" id="3_doiip"]
 [ext_resource type="Script" path="res://scripts/Player/stats/PlayerStats.gd" id="3_dq5ys"]
 [ext_resource type="Script" path="res://scripts/Player/Inventario.gd" id="4_jjs1o"]
+[ext_resource type="AudioStream" uid="uid://kn8rna6awdqn" path="res://assests/sounds/jump.wav" id="8_rarxd"]
+[ext_resource type="AudioStream" uid="uid://dnbbd4sxiu4o6" path="res://assests/sounds/explosion.wav" id="9_4epqt"]
 
 [sub_resource type="Resource" id="Resource_4tcac"]
 script = ExtResource("2_1067w")
@@ -343,3 +345,9 @@ explosiveness = 0.64
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("4_jjs1o")
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_rarxd")
+
+[node name="dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_4epqt")

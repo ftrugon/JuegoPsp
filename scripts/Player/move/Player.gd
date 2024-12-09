@@ -18,6 +18,10 @@ var y_dir = 0
 @onready var sliding_particles = $Particles/SlidingParticles
 @onready var diying_particles = $Particles/DiyingParticles
 
+@onready var jump_sound = $jump
+@onready var dash_sound = $dash
+
+
 var actualGravity = 0
 
 #movimiento
@@ -128,11 +132,11 @@ func is_on_coyote_time() -> bool:
 	return coyote_timer <= estadisticas.get_max_coyote_time()
 
 func jump(delta):
-	
 	#la primera vez que se pulsa el salto
 	if input_jump and can_jump():
 		#genera las particulas de salto
 		jump_particles.restart()
+		jump_sound.play()
 		#aplica el salto
 		velocity.y = estadisticas.get_jump_force() / 2
 		jump_actual_duration = 0
@@ -209,6 +213,7 @@ func dash():
 	
 	#particulas del dash
 	dash_particles.restart()
+	dash_sound.play()
 	# Aplica la velocidad del dash
 	velocity.x = (to_dash_x * 1.5 * x_dir)
 	velocity.y = (to_dash_y * y_dir)
