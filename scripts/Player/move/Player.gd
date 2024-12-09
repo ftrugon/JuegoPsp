@@ -220,11 +220,6 @@ func inputs():
 		x_dir = Input.get_axis("left","right")
 		y_dir = Input.get_axis("Up","Down")
 		input_jump = Input.is_action_just_pressed("Jump")
-		
-		
-		#Easter egg por pulsar arriba y abajo a la vez
-		if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_down") :
-			global_position.y = -1000
 
 func on_floor_and_walls_variables_manage(delta):
 	

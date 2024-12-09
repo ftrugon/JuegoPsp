@@ -19,7 +19,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
 	tp_to_spawn = true
-	#get_tree().reload_current_scene()
 
 func _process(delta: float) -> void:
 	if tp_to_spawn and body_var is Player:

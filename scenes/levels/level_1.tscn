@@ -1,17 +1,17 @@
 [gd_scene load_steps=27 format=4 uid="uid://s74wkqluv574"]
 
-[ext_resource type="PackedScene" uid="uid://dc6yn28m2cepn" path="res://scenes/player.tscn" id="1_3363o"]
-[ext_resource type="Script" path="res://scripts/Player/Inventario.gd" id="2_d605f"]
-[ext_resource type="PackedScene" uid="uid://c1uqykuc2h0ah" path="res://scenes/inventory_gui.tscn" id="2_kvffh"]
-[ext_resource type="Texture2D" uid="uid://bq0boa6bwgmqj" path="res://assests/sprites/world_tileset.png" id="3_f82h3"]
-[ext_resource type="Texture2D" uid="uid://bv0g2a3xi45uk" path="res://assests/sprites/Terreno.png" id="4_cljcc"]
-[ext_resource type="Texture2D" uid="uid://cl1b7ysrykn0j" path="res://assests/MyAssets/spikes-tileset.png" id="5_ys3fw"]
-[ext_resource type="Texture2D" uid="uid://ds0qjjcm8fdur" path="res://assests/tilesets/bgDirt.png" id="6_2a5gx"]
-[ext_resource type="Texture2D" uid="uid://3yc07ik3okm1" path="res://assests/tilesets/bgSummit.png" id="7_hm8hu"]
-[ext_resource type="Texture2D" uid="uid://41dahy30ulsm" path="res://assests/tesoro/Treasure+.png" id="7_xvdgj"]
-[ext_resource type="PackedScene" uid="uid://cspyqhablrf6j" path="res://scenes/kill_zone.tscn" id="8_f3tft"]
-[ext_resource type="PackedScene" uid="uid://rhglydiq12q6" path="res://scenes/parallax_background.tscn" id="9_xk472"]
-[ext_resource type="Script" path="res://scripts/lvl_changer.gd" id="12_cqfv2"]
+[ext_resource type="PackedScene" uid="uid://dc6yn28m2cepn" path="res://scenes/player.tscn" id="1_i87tc"]
+[ext_resource type="Script" path="res://scripts/Player/Inventario.gd" id="2_bqtp3"]
+[ext_resource type="PackedScene" uid="uid://c1uqykuc2h0ah" path="res://scenes/inventory_gui.tscn" id="3_uyf6s"]
+[ext_resource type="Texture2D" uid="uid://bq0boa6bwgmqj" path="res://assests/sprites/world_tileset.png" id="4_1u5s8"]
+[ext_resource type="Texture2D" uid="uid://bv0g2a3xi45uk" path="res://assests/sprites/Terreno.png" id="5_h0u3p"]
+[ext_resource type="Texture2D" uid="uid://cl1b7ysrykn0j" path="res://assests/MyAssets/spikes-tileset.png" id="6_54q5e"]
+[ext_resource type="Texture2D" uid="uid://41dahy30ulsm" path="res://assests/tesoro/Treasure+.png" id="7_livsk"]
+[ext_resource type="Texture2D" uid="uid://ds0qjjcm8fdur" path="res://assests/tilesets/bgDirt.png" id="8_5rqb1"]
+[ext_resource type="Texture2D" uid="uid://3yc07ik3okm1" path="res://assests/tilesets/bgSummit.png" id="9_hq6ja"]
+[ext_resource type="PackedScene" uid="uid://cspyqhablrf6j" path="res://scenes/kill_zone.tscn" id="10_1lxmt"]
+[ext_resource type="PackedScene" uid="uid://rhglydiq12q6" path="res://scenes/parallax_background.tscn" id="11_hhv26"]
+[ext_resource type="Script" path="res://scripts/lvl_changer.gd" id="12_gfl2n"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ucyun"]
 polygon = PackedVector2Array(601, -99, 667, 0, 655, -85, 613, -133, 715, -231, 841, -124, 798, -62, 819, -41, 712, -45, 745, 4, 865, -21, 866, -172, 715, -282, 612.299, -208.545, 564, -174)
@@ -34,8 +34,8 @@ fill = 1
 fill_from = Vector2(0.465812, 0.525641)
 fill_to = Vector2(0.0769231, 0.111111)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u2dxy"]
-texture = ExtResource("3_f82h3")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvjjo"]
+texture = ExtResource("4_1u5s8")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -228,8 +228,8 @@ texture_region_size = Vector2i(8, 8)
 0:6/0 = 0
 2:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t328m"]
-texture = ExtResource("4_cljcc")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfsrl"]
+texture = ExtResource("5_h0u3p")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 1:0/0 = 0
@@ -422,8 +422,8 @@ texture = ExtResource("4_cljcc")
 8:3/0 = 0
 8:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecq1l"]
-texture = ExtResource("5_ys3fw")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_213ji"]
+texture = ExtResource("6_54q5e")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 3, 4, 3, 4, 4, -4, 4)
@@ -450,8 +450,8 @@ texture_region_size = Vector2i(8, 8)
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 4, 4, -3, 4, 4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5uwh"]
-texture = ExtResource("7_xvdgj")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfx38"]
+texture = ExtResource("7_livsk")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 4:0/0 = 0
@@ -1447,8 +1447,8 @@ texture_region_size = Vector2i(8, 8)
 30:31/0 = 0
 31:31/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjsd2"]
-texture = ExtResource("6_2a5gx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvs7n"]
+texture = ExtResource("8_5rqb1")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -3, 4, 4, -4, 4, -4, -3)
@@ -1585,8 +1585,8 @@ texture_region_size = Vector2i(8, 8)
 4:0/0 = 0
 5:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_12rgr"]
-texture = ExtResource("7_hm8hu")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cv6ev"]
+texture = ExtResource("9_hq6ja")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -1683,12 +1683,12 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_1gsw5"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 2
-sources/0 = SubResource("TileSetAtlasSource_u2dxy")
-sources/1 = SubResource("TileSetAtlasSource_t328m")
-sources/6 = SubResource("TileSetAtlasSource_cjsd2")
-sources/8 = SubResource("TileSetAtlasSource_12rgr")
-sources/13 = SubResource("TileSetAtlasSource_ecq1l")
-sources/2 = SubResource("TileSetAtlasSource_h5uwh")
+sources/0 = SubResource("TileSetAtlasSource_yvjjo")
+sources/1 = SubResource("TileSetAtlasSource_kfsrl")
+sources/6 = SubResource("TileSetAtlasSource_vvs7n")
+sources/8 = SubResource("TileSetAtlasSource_cv6ev")
+sources/13 = SubResource("TileSetAtlasSource_213ji")
+sources/2 = SubResource("TileSetAtlasSource_gfx38")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_136jj"]
 size = Vector2(13, 51)
@@ -1696,7 +1696,7 @@ size = Vector2(13, 51)
 [node name="Game" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [315.0]
 
-[node name="Player" parent="." instance=ExtResource("1_3363o")]
+[node name="Player" parent="." instance=ExtResource("1_i87tc")]
 visibility_layer = 7
 position = Vector2(1145, 313)
 
@@ -1707,12 +1707,12 @@ limit_right = 1400
 position_smoothing_enabled = true
 
 [node name="Inventario2" type="Node2D" parent="Player"]
-script = ExtResource("2_d605f")
+script = ExtResource("2_bqtp3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="InventoryGui" parent="CanvasLayer" instance=ExtResource("2_kvffh")]
+[node name="InventoryGui" parent="CanvasLayer" instance=ExtResource("3_uyf6s")]
 visible = false
 
 [node name="Lights" type="Node2D" parent="."]
@@ -1780,42 +1780,42 @@ tile_set = SubResource("TileSet_1gsw5")
 
 [node name="killzones" type="Node2D" parent="."]
 
-[node name="KillZone" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(172, 267)
 where_to_tp = Vector2(226, 497)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone"]
 polygon = PackedVector2Array(9, 231, 9, 221, 17, 221, 17, 205, 9, 205, 9, 37, 1, 37, 1, -3, -3, -3, -3, 41, 5, 41, 5, 209, 13, 209, 13, 217, 5, 217, 5, 231)
 
-[node name="KillZone2" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone2" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(214, 278)
 where_to_tp = Vector2(226, 497)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone2"]
 polygon = PackedVector2Array(3, 3, 3, 8, 5, 10, 5, 34, 13, 34, 13, 54, 13, 64, 10, 67, 14, 74, 18, 63, 26, 63, 26, 66, 29, 66, 29, 82, 37, 82, 37, 98, 42, 98, 46, 106, 50, 99, 50, 111, 64, 111, 73, 122, 77, 122, 77, 138, 85, 138, 85, 152, 82, 154, 86, 162, 89, 155, 91, 155, 91, 157, 106, 171, 106, 174, 106, 175, 127, 175, 11, 3)
 
-[node name="KillZone3" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone3" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(339, 509)
 where_to_tp = Vector2(435, 297)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone3"]
 polygon = PackedVector2Array(5, -2, 5, 3, 55, 3, 55, -5, 62, -12, 62, -13, 59, -13, 53, -7, 53, -2)
 
-[node name="KillZone4" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone4" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(476, 294)
 where_to_tp = Vector2(856, 617)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone4"]
 polygon = PackedVector2Array(-3, -1, 36, -1, 36, 7, 52, 7, 52, 5, 68, 5, 68, 7, 100, 7, 100, 5, 108, 5, 108, 7, 124, 7, 124, 5, 140, 5, 140, 7, 188, 7, 188, 5, 212, 5, 212, 7, 228, 7, 228, -3, 268, -3, 268, 10, -3, 10)
 
-[node name="KillZone5" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone5" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(753, 219)
 where_to_tp = Vector2(856, 617)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone5"]
 polygon = PackedVector2Array(-5, -3, -9, 5, -1, 5)
 
-[node name="KillZone6" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone6" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(751, 165)
 rotation = 3.14159
 where_to_tp = Vector2(856, 617)
@@ -1823,14 +1823,14 @@ where_to_tp = Vector2(856, 617)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone6"]
 polygon = PackedVector2Array(-5, -3, -9, 5, -1, 5)
 
-[node name="KillZone7" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone7" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(772, 123)
 where_to_tp = Vector2(856, 617)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone7"]
 polygon = PackedVector2Array(-3, -3, -11, 5, -11, 5, -11, 0, -8, -3)
 
-[node name="KillZone8" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone8" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(805, 132)
 rotation = -4.71239
 where_to_tp = Vector2(856, 617)
@@ -1838,21 +1838,21 @@ where_to_tp = Vector2(856, 617)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone8"]
 polygon = PackedVector2Array(-3, -3, -11, 5, -11, 5, -11, 0, -8, -3)
 
-[node name="KillZone9" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone9" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(754, 468)
 where_to_tp = Vector2(856, 617)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone9"]
 polygon = PackedVector2Array(-15, -12, -15, -5, -25, 5, -29, 5, -29, 20, -37, 20, -37, 44, -45, 44, -45, 92, -37, 92, -37, 140, -32, 140, -13, 159, 46, 159, 46, 154, 51, 150, 51, 162, -58, 162, -58, 7)
 
-[node name="KillZone10" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone10" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(799, 378)
 where_to_tp = Vector2(856, 617)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone10"]
 polygon = PackedVector2Array(9, -1, 16, 6, 18, 6, 23, 2, 27, 6, 27, 21, 27, 22, 33, 22, 34, 27, 34, 36, 34, 37, 86, 54, 86, 32, 106, 15, 109, 14, 110, 14, 110, -16, 121, -24, 114, -24, 43, -4)
 
-[node name="KillZone11" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone11" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(871, 557)
 rotation = -3.14159
 where_to_tp = Vector2(856, 617)
@@ -1860,20 +1860,20 @@ where_to_tp = Vector2(856, 617)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone11"]
 polygon = PackedVector2Array(-5, -3, -9, 5, -1, 5)
 
-[node name="KillZone12" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone12" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(1183, 395)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone12"]
 polygon = PackedVector2Array(-4, 13, -4, 61, 4, 60, 3, 14)
 
-[node name="KillZone13" parent="killzones" instance=ExtResource("8_f3tft")]
+[node name="KillZone13" parent="killzones" instance=ExtResource("10_1lxmt")]
 position = Vector2(348, 427)
 where_to_tp = Vector2(435, 297)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="killzones/KillZone13"]
 polygon = PackedVector2Array(-10, 21, -10, 26, 19, 26, 23, 26, 25, 24, 25, -163, 33, -163, 33, -179, 41, -179, 41, -195, 45, -195, 60, -210, 60, -214, 76, -214, 76, -222, 92, -222, 92, -226, 68, -227, 14, -172)
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("9_xk472")]
+[node name="ParallaxBackground" parent="." instance=ExtResource("11_hhv26")]
 
 [node name="Label" type="Label" parent="."]
 offset_left = 1209.0
@@ -1907,8 +1907,7 @@ safe zone"
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-3, 253)
-script = ExtResource("12_cqfv2")
-lvl_to_change = "res://scenes/levels/level_2.tscn"
+script = ExtResource("12_gfl2n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(25, -21)
